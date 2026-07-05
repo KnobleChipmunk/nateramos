@@ -1,0 +1,22 @@
+{{- $current := . -}}
+{{- $seriesTerms := .GetTerms "series" -}}
+{{- if $seriesTerms -}}
+{{- $related := slice -}}
+{{- range $seriesTerms -}}
+{{- range .Pages -}}
+{{- if ne .RelPermalink $current.RelPermalink -}}
+{{- $related = $related | append . -}}
+{{- end -}}
+{{- end -}}
+{{- end -}}
+{{- with uniq $related -}}
+<section class="related-series" aria-label="Related posts">
+    <h2>Related posts</h2>
+    <ul class="related-series-list">
+        {{- range . }}
+        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+        {{- end }}
+    </ul>
+</section>
+{{- end -}}
+{{- end -}}
