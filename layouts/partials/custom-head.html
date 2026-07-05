@@ -1,0 +1,4 @@
+{{/* Site analytics. Only loaded for production builds so local dev doesn't pollute stats. */}}
+{{ if hugo.IsProduction }}
+<script data-goatcounter="https://babagoat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+{{ end }}

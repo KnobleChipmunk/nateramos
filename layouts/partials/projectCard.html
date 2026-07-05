@@ -5,12 +5,16 @@
     {{ with .Params.summary }}
     <p class="project-item-summary">{{ . }}</p>
     {{ end }}
-    {{ with .Params.stack }}
-    <ul class="tag-list" aria-label="Technology stack">
-        {{ range . }}<li class="tag">{{ . }}</li>{{ end }}
-    </ul>
-    {{ end }}
-    {{ with .Params.dates }}
-    <p class="project-item-dates">{{ . }}</p>
+    {{ if or .Params.stack .Params.dates }}
+    <div class="project-item-footer">
+        {{ with .Params.stack }}
+        <ul class="tag-list" aria-label="Technology stack">
+            {{ range . }}<li class="tag">{{ . }}</li>{{ end }}
+        </ul>
+        {{ end }}
+        {{ with .Params.dates }}
+        <p class="project-item-dates">{{ . }}</p>
+        {{ end }}
+    </div>
     {{ end }}
 </article>
