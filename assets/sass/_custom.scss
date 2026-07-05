@@ -1,0 +1,109 @@
+// Projects section intro (content/projects/_index.md body)
+.projects-intro {
+  margin-bottom: $spacing-full - 10;
+}
+
+// Technology stack badges (project list cards + project single page)
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  list-style: none;
+  margin: 0.6em 0;
+  padding: 0;
+}
+
+.tag {
+  display: inline-block;
+  font-size: $small-font-size;
+  padding: 2px 8px;
+  border-radius: 3px;
+  color: $inline-code-text;
+  background-color: $inline-code-bg;
+}
+
+// Project role / dates meta line
+.project-meta-sep {
+  margin: 0 0.3em;
+}
+
+// Repo / write-up links styled as buttons
+.project-links {
+  margin: 0.6em 0;
+}
+
+.project-link-button {
+  display: inline-block;
+  margin-right: 0.6em;
+  padding: 4px 12px;
+  border: 1px solid $text-link-blue;
+  border-radius: 4px;
+  color: $text-link-blue;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: $white;
+    background-color: $text-link-blue;
+  }
+}
+
+// Project list card summary / dates
+.project-item-summary {
+  margin: 0.3em 0;
+}
+
+.project-item-dates {
+  color: $gray;
+  font-size: $small-font-size;
+  margin: 0;
+}
+
+// Related posts (series cross-link between projects and blog posts)
+.related-series {
+  margin-top: 3em;
+  border-top: 1px solid $light;
+  padding-top: 1em;
+}
+
+.related-series-list {
+  margin: 0;
+  padding-left: $spacing-full;
+}
+
+@mixin custom-dark-mode {
+  .tag {
+    color: $dark-inline-code-text;
+    background-color: $dark-inline-code-bg;
+  }
+
+  .project-item-dates {
+    color: $dark-gray;
+  }
+
+  .project-link-button {
+    border-color: $dark-text-link-blue;
+    color: $dark-text-link-blue;
+
+    &:hover,
+    &:focus {
+      color: $dark-black;
+      background-color: $dark-text-link-blue;
+    }
+  }
+
+  .related-series {
+    border-color: $dark-light;
+  }
+}
+
+// support JS disabled environment with media query, mirrors theme's _dark.scss trigger
+@media (prefers-color-scheme: dark) {
+  html:not(.light) {
+    @include custom-dark-mode();
+  }
+}
+
+html.dark {
+  @include custom-dark-mode();
+}

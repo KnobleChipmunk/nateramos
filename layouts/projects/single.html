@@ -1,0 +1,33 @@
+{{ define "main" }}
+<div class="wrapper post project-single">
+    <main class="page-content" aria-label="Content">
+        <article>
+            <header class="header">
+                <h1 class="header-title">{{ .Title }}</h1>
+                <div class="post-meta project-meta">
+                    {{ with .Params.role }}<span class="project-role">{{ . }}</span>{{ end }}
+                    {{ if and .Params.role .Params.dates }}<span class="project-meta-sep">&middot;</span>{{ end }}
+                    {{ with .Params.dates }}<span class="project-dates">{{ . }}</span>{{ end }}
+                </div>
+                {{ with .Params.stack }}
+                <ul class="tag-list" aria-label="Technology stack">
+                    {{ range . }}<li class="tag">{{ . }}</li>{{ end }}
+                </ul>
+                {{ end }}
+                {{ with .Params.links }}
+                <p class="project-links">
+                    {{ with .repo }}<a class="project-link-button" href="{{ . }}">Repository</a>{{ end }}
+                    {{ with .writeup }}<a class="project-link-button" href="{{ . }}">Write-up</a>{{ end }}
+                </p>
+                {{ end }}
+            </header>
+            {{ partial "toc.html" . }}
+            <div class="page-content">
+                {{ .Content }}
+            </div>
+            {{ partial "relatedSeries.html" . }}
+        </article>
+        {{- partial "comments.html" . -}}
+    </main>
+</div>
+{{ end }}
