@@ -28,6 +28,12 @@ locale = 'en-us'
   weight = 10
 
 [[menu.main]]
+  pageRef = "start-here"
+  name = "Start Here"
+  url = "/start-here/"
+  weight = 15
+
+[[menu.main]]
   pageRef = "posts"
   name = "Posts"
   url = "/posts/"
