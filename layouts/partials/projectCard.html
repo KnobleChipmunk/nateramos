@@ -1,0 +1,16 @@
+<article class="post-item project-item">
+    <h2 class="post-item-title project-item-title">
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </h2>
+    {{ with .Params.summary }}
+    <p class="project-item-summary">{{ . }}</p>
+    {{ end }}
+    {{ with .Params.stack }}
+    <ul class="tag-list" aria-label="Technology stack">
+        {{ range . }}<li class="tag">{{ . }}</li>{{ end }}
+    </ul>
+    {{ end }}
+    {{ with .Params.dates }}
+    <p class="project-item-dates">{{ . }}</p>
+    {{ end }}
+</article>
