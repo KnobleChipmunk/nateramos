@@ -2,6 +2,24 @@
 title = 'About'
 date = 2026-07-05
 draft = false
+layout = 'about'
+
+[params]
+  portraitImage = 'images/portrait.jpg'
+  portraitAlt = 'Portrait of Nate Ramos'
+  githubURL = 'https://github.com/KnobleChipmunk'
+  linkedinURL = 'https://www.linkedin.com/in/nateohano'
+  bioText = "Nate Ramos is a data platform engineer who builds cloud-native geospatial data pipelines and the agentic AI systems that keep them running. His work spans AWS pipeline migrations, MCP server development, agent orchestration, and production data-quality engineering. On his own time he builds AI-workflow infrastructure — memory layers, multi-agent coordination, self-improving agent systems — and writes about what actually works when you put AI into production at nateramos.com."
+
+  [[params.timeline]]
+    period = '20XX – now'
+    role = 'Data Platform Engineer'
+    focus = 'Geospatial pipelines, AWS, Agentic AI systems'
+
+  [[params.timeline]]
+    period = '20XX – 20XX'
+    role = '[PRIOR ROLE — TODO]'
+    focus = ''
 +++
 
 Hi, I'm Nate. I build cloud data pipelines and the agentic systems that keep them running, and I write about what actually works when you put AI into production.
