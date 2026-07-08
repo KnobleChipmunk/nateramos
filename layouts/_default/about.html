@@ -1,0 +1,81 @@
+{{/*
+  Custom About page layout (content/about.md sets `layout = 'about'` to select
+  this over the theme's default _default/single.html). Structure only — copy,
+  timeline entries, portrait, and social links all come from front matter/body
+  so this file doesn't need editing when that content changes.
+*/}}
+{{ define "main" }}
+<div class="wrapper post about-page">
+    <main class="page-content" aria-label="Content">
+        <article>
+            <header class="header">
+                <h1 class="header-title">{{ .Title }}</h1>
+            </header>
+
+            {{ $github := .Params.githubURL }}
+            {{ $linkedin := .Params.linkedinURL }}
+
+            <section class="about-intro">
+                <div class="about-intro-image">
+                    {{ with resources.Get .Params.portraitImage }}
+                    {{ $portrait1x := .Fill "320x400 center webp" }}
+                    {{ $portrait2x := .Fill "640x800 center webp" }}
+                    <img
+                        class="about-portrait"
+                        src="{{ $portrait1x.RelPermalink }}"
+                        srcset="{{ $portrait1x.RelPermalink }} 1x, {{ $portrait2x.RelPermalink }} 2x"
+                        width="{{ $portrait1x.Width }}"
+                        height="{{ $portrait1x.Height }}"
+                        alt="{{ $.Params.portraitAlt | default "Portrait of Nate Ramos" }}"
+                        loading="eager" />
+                    {{ end }}
+
+                    <div class="about-social-icons">
+                        {{ with $github }}
+                        <a href="{{ . }}" target="_blank" rel="noopener noreferrer me" aria-label="GitHub">
+                            {{ partial "svgs/svgs.html" (dict "name" "github") }}
+                        </a>
+                        {{ end }}
+                        {{ with $linkedin }}
+                        <a href="{{ . }}" target="_blank" rel="noopener noreferrer me" aria-label="LinkedIn">
+                            {{ partial "svgs/svgs.html" (dict "name" "linkedin") }}
+                        </a>
+                        {{ end }}
+                    </div>
+                </div>
+
+                <div class="about-intro-text page-content">
+                    {{ .Content }}
+                </div>
+            </section>
+
+            {{ with .Params.timeline }}
+            <section class="about-timeline" aria-labelledby="about-timeline-heading">
+                <h2 id="about-timeline-heading" class="visually-hidden">Career timeline</h2>
+                {{ range . }}
+                <p class="about-timeline-entry">
+                    <span class="about-timeline-period">{{ .period }}</span>
+                    <span class="about-timeline-role">{{ .role }}{{ with .focus }} ({{ . }}){{ end }}</span>
+                </p>
+                {{ end }}
+            </section>
+            {{ end }}
+
+            <div class="about-divider" role="presentation">
+                <hr />
+                <hr />
+            </div>
+
+            <section class="about-bio">
+                <h2>Bio</h2>
+                <p>{{ .Params.bioText }}</p>
+                <p class="about-bio-social">
+                    Social:
+                    {{ with $github }}<a href="{{ . }}" target="_blank" rel="noopener noreferrer me">GitHub</a>{{ end }}
+                    {{ with $linkedin }}<a href="{{ . }}" target="_blank" rel="noopener noreferrer me">LinkedIn</a>{{ end }}
+                </p>
+            </section>
+        </article>
+    </main>
+</div>
+{{ end }}
