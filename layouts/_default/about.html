@@ -18,8 +18,8 @@
             <section class="about-intro">
                 <div class="about-intro-image">
                     {{ with resources.Get .Params.portraitImage }}
-                    {{ $portrait1x := .Fill "480x600 center webp" }}
-                    {{ $portrait2x := .Fill "960x1200 center webp" }}
+                    {{ $portrait1x := .Fill "320x400 center webp" }}
+                    {{ $portrait2x := .Fill "640x800 center webp" }}
                     <img
                         class="about-portrait"
                         src="{{ $portrait1x.RelPermalink }}"
